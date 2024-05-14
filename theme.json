@@ -1,6 +1,26 @@
 {
 	"$schema": "https://schemas.wp.org/wp/6.0/theme.json",
     "version": 2,
-    "settings": {},
-    "styles": {}
+    "settings": {
+        "appearanceTools": true,
+        "layout": {
+			"contentSize": "800px",
+			"wideSize": "1200px"
+		}
+    },
+    "styles": {
+        "spacing": {
+            "blockGap": "20px",
+            "padding": {
+                "left": "0",
+                "right": "0"
+            }
+        },
+        "typography": {
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif"
+        }
+    },
+    "customTemplates": [],
+    "templateParts": [],
+    "patterns": []
 }
