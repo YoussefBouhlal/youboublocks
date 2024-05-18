@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Enqueue style sheet.
+ *
+ * @since 1.0.0
+ */
+function youbou_blocks_enqueue_style() {
+	wp_enqueue_style( 'youbou_blocks_style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+}
+add_action( 'wp_enqueue_scripts', 'youbou_blocks_enqueue_style' );
+
+/**
  * Trime the content of the post in archive pages.
  * 
  * @param string $content
