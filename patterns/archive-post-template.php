@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Archive Post Template
- * Slug: youbou-blocks/archive-post-template
+ * Slug: youboublocks/archive-post-template
  * Categories: posts
  */
 ?>
@@ -26,10 +26,10 @@
 
     <!-- wp:query-no-results -->
         <!-- wp:paragraph -->
-        <p><?php esc_html_e( 'It looks like you\'ve stumbled upon a category that currently doesn\'t have any posts. Please check back later or explore other categories for more content.', 'youbou-blocks' ); ?></p>
+        <p><?php esc_html_e( 'It looks like you\'ve stumbled upon a category that currently doesn\'t have any posts. Please check back later or explore other categories for more content.', 'youboublocks' ); ?></p>
         <!-- /wp:paragraph -->
         <!-- wp:heading -->
-        <h2 class="wp-block-heading"><?php esc_html_e( 'Recent Posts', 'youbou-blocks' ); ?></h2>
+        <h2 class="wp-block-heading"><?php esc_html_e( 'Recent Posts', 'youboublocks' ); ?></h2>
         <!-- /wp:heading -->
         <!-- wp:latest-posts /-->
     <!-- /wp:query-no-results -->
