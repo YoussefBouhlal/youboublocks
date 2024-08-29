@@ -18,7 +18,7 @@
         <!-- /wp:spacer -->
     <!-- /wp:post-template -->
 
-    <!-- wp:query-pagination -->
+    <!-- wp:query-pagination {"paginationArrow":"chevron","showLabel":false} -->
         <!-- wp:query-pagination-previous /-->
         <!-- wp:query-pagination-numbers /-->
         <!-- wp:query-pagination-next /-->
