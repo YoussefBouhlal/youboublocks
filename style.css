@@ -2,13 +2,13 @@
  * Theme Name:        Youbou Blocks
  * Theme URI:         https://github.com/YoussefBouhlal/youboublocks.git
  * Description:       Youbou Blocks is a block theme.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Youssef Bouhlal
  * Author URI:        https://youssefbouhlal.com/
  * Tags:              block-patterns, full-site-editing
  * Text Domain:       youboublocks
  * Domain Path:       /languages
- * Tested up to:      6.5
+ * Tested up to:      7.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * License:           GNU General Public License v2.0 or later
@@ -16,21 +16,106 @@
  */
 
 
-:where( :not( pre ) > code ) {
+:where( .wp-site-blocks, .editor-styles-wrapper ) :not( pre ) > code {
     background: var(--wp--preset--color--light-bg);
     border-radius: 5px;
     font-size: 80%;
     font-style: italic;
     padding: 5px 7px;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    white-space: normal;
 }
 
-footer.wp-block-template-part {
+:where( .wp-site-blocks, .editor-styles-wrapper ) pre.wp-block-code,
+.youbou-blocks-post-preview pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) :is( h1, h2, h3, h4, h5, h6 ) {
+    color: var(--wp--preset--color--heading);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 2.895rem;
+    margin-bottom: 0.526rem;
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) h1 {
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.3;
+    margin-top: 6.316rem;
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) h1:where( :not( [class*="-font-size"] ) ) {
+    font-size: var(--wp--preset--font-size--h-1);
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) h2:where( :not( [class*="-font-size"] ) ) {
+    font-size: var(--wp--preset--font-size--h-2);
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) h3:where( :not( [class*="-font-size"] ) ) {
+    font-size: var(--wp--preset--font-size--h-3);
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) .wp-block-navigation-item__content:hover {
+    color: var(--wp--preset--color--text);
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) .wp-block-image:not( .has-custom-border ) img {
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px #efefef;
+}
+
+:where( .wp-site-blocks, .editor-styles-wrapper ) a:focus-visible,
+:where( .wp-site-blocks, .editor-styles-wrapper ) button:focus-visible,
+:where( .wp-site-blocks, .editor-styles-wrapper ) input:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 4px;
+}
+
+.wp-site-blocks > footer.wp-block-template-part {
     margin-right: -20px;
     margin-left: -20px;
+}
+
+.youbou-blocks-post-list > .wp-block-post {
+    margin-bottom: 120px;
+}
+
+.youbou-blocks-footer {
+    row-gap: 24px;
+}
+
+.youbou-blocks-footer .wp-block-site-logo img {
+    border-radius: 50%;
+}
+
+.youbou-blocks-copyright {
+    margin: 0;
 }
 
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-close {
 	padding-top: 40px;
 	padding-right: 30px;
+}
+
+@media (max-width: 600px) {
+
+    :where( .wp-site-blocks, .editor-styles-wrapper ) h1 {
+        margin-top: 3rem;
+    }
+
+    :where( .wp-site-blocks, .editor-styles-wrapper ) h1:where( :not( [class*="-font-size"] ) ) {
+        font-size: 1.789rem;
+    }
+
+    .youbou-blocks-post-list > .wp-block-post {
+        margin-bottom: 64px;
+    }
+
+    .youbou-blocks-footer {
+        text-align: center;
+    }
 }

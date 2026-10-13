@@ -1,4 +1,21 @@
 <?php
+/**
+ * Theme setup and assets.
+ *
+ * @package YoubouBlocks
+ */
+
+/**
+ * Configure translations and supplementary editor styles.
+ *
+ * @return void
+ */
+function youbou_blocks_setup() {
+	load_theme_textdomain( 'youboublocks', get_template_directory() . '/languages' );
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'style.css' );
+}
+add_action( 'after_setup_theme', 'youbou_blocks_setup' );
 
 /**
  * Enqueue style sheet.
@@ -10,23 +27,4 @@ function youbou_blocks_enqueue_style() {
 }
 add_action( 'wp_enqueue_scripts', 'youbou_blocks_enqueue_style' );
 
-/**
- * Trime the content of the post in archive pages.
- * 
- * @param string $content
- * @since 1.0.0
- * @return string
- */
-function youbou_blocks_trim_content_in_archive( $content ) {
-
-    if ( ! is_single() ) {
-        $content = str_replace( ']]>', ']]&gt;', $content );
-        $content = explode( '<h2 class="wp-block-heading">', $content );
-        $content = array_slice( $content, 0, 1 );
-        $content = implode( '<h2 class="wp-block-heading">', $content );
-        $content = preg_replace( '/<!--(.|\s)*?-->/', '', $content );
-    }
-
-    return $content;
-}
-add_filter( 'the_content', 'youbou_blocks_trim_content_in_archive' );
+require_once get_template_directory() . '/inc/blocks.php';
