@@ -2,7 +2,7 @@
  * Theme Name:        Youbou Blocks
  * Theme URI:         https://github.com/YoussefBouhlal/youboublocks.git
  * Description:       Youbou Blocks is a block theme.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Youssef Bouhlal
  * Author URI:        https://youssefbouhlal.com/
  * Tags:              block-patterns, full-site-editing
@@ -70,7 +70,8 @@
 
 :where( .wp-site-blocks, .editor-styles-wrapper ) a:focus-visible,
 :where( .wp-site-blocks, .editor-styles-wrapper ) button:focus-visible,
-:where( .wp-site-blocks, .editor-styles-wrapper ) input:focus-visible {
+:where( .wp-site-blocks, .editor-styles-wrapper ) input:focus-visible,
+:where( .wp-site-blocks, .editor-styles-wrapper ) textarea:focus-visible {
     outline: 2px solid currentcolor;
     outline-offset: 4px;
 }
@@ -94,6 +95,44 @@
 
 .youbou-blocks-copyright {
     margin: 0;
+}
+
+.wp-site-blocks :is( .wp-block-comments, .wp-block-post-comments ) {
+    margin-top: 4rem;
+    overflow-wrap: anywhere;
+}
+
+.wp-site-blocks :is( .wp-block-comment-template, .commentlist ) li {
+    margin-block: 1.5rem;
+}
+
+.wp-site-blocks :is( .wp-block-comment-template, .commentlist ) ol,
+.wp-site-blocks :is( .wp-block-comment-template, .commentlist ) .children {
+    padding-inline-start: 1rem;
+}
+
+.wp-site-blocks .comment-form label {
+    display: block;
+}
+
+.wp-site-blocks .comment-form :is( input:not( [type="checkbox"], [type="hidden"], [type="submit"] ), textarea ) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem;
+    border: 1px solid currentcolor;
+    border-radius: 4px;
+    background: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--text);
+    font: inherit;
+}
+
+.wp-site-blocks .comment-form textarea {
+    resize: vertical;
+}
+
+.wp-site-blocks .comment-form-cookies-consent label {
+    display: inline;
 }
 
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-close {

@@ -24,6 +24,9 @@ add_action( 'after_setup_theme', 'youbou_blocks_setup' );
  */
 function youbou_blocks_enqueue_style() {
 	wp_enqueue_style( 'youbou_blocks_style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'youbou_blocks_enqueue_style' );
 

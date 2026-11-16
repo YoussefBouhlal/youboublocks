@@ -2,18 +2,22 @@
 
 A simple, reading-focused WordPress theme for personal blogs, articles, and tutorials. Youbou Blocks gives your writing room to breathe, with clear headings, a flexible logo and menu, and layouts that adapt to phones and larger screens.
 
-**Version:** 1.1.0  
+![Youbou Blocks blog layout with a site logo, navigation menu, and article previews.](screenshot.png)
+
+**Version:** 1.2.0
+
 **Author:** Youssef Bouhlal  
 **Compatibility target:** WordPress 6.0 or newer and PHP 7.4 or newer.
 
-Youbou Blocks is a **block theme**: you can arrange its layouts using WordPress's visual Site Editor instead of editing code. Some details, such as the preview rules and copyright holder's name, are defined by the theme and require code changes to alter.
+Youbou Blocks is a **block theme**: you can arrange its layouts using WordPress's visual Site Editor instead of editing code. The article-preview rules are defined by the theme; the footer's copyright holder can be changed in the editor.
 
 ## Features at a glance
 
 - **Ready-made layouts** for your blog, individual articles, ordinary pages, category and other archives, search results, and missing pages.
 - **Formatted article previews** that can include introductory text, images, and other blocks, followed by a Read more link.
 - **A responsive header** with your site logo and a menu that opens as an overlay on smaller screens.
-- **A shared footer** with your local site logo, social links, and an automatically updated copyright year.
+- **A shared footer** with your site logo and an automatically updated copyright year, using your site title or an optional custom holder name. No personal social accounts are shipped.
+- **Native article comments** with replies, pagination, and a comment form that follow WordPress discussion settings.
 - **A reading-friendly design** with a white background, dark headings, muted body text, darker gold links, and generous spacing.
 - **Comfortable typography** using fonts already available on the visitor's device, without requiring an external font service.
 - **Six named colors** and text-size presets available in the editor, with regular and wider content layouts.
@@ -30,7 +34,7 @@ WordPress chooses the right layout automatically. You do not need to create a se
 | Layout | What visitors see |
 | --- | --- |
 | Blog | A Blog heading, linked article titles, previews, category links, and navigation between pages of posts. |
-| Single article | The full article, its title, publication date, and category links. |
+| Single article | The full article, its title, publication date, category links, and native comments when applicable. |
 | Ordinary page | A page title and full content, without the blog's article-list layout. |
 | Archive | A category or other archive title, matching posts, and pagination. |
 | Search | The search phrase, a labeled search form, and matching article previews. |
@@ -62,10 +66,11 @@ The Read more link opens the full article. Its screen-reader label includes the 
 1. **Activate the theme.** In your WordPress dashboard, go to **Appearance > Themes** and activate Youbou Blocks. If it is not installed, upload the theme ZIP through **Add New > Upload Theme** first.
 2. **Add your logo.** Open **Appearance > Editor**, edit the header, and select the Site Logo block to choose or upload an image. The footer uses the same logo at a smaller size. Without a logo, the theme does not display a broken image.
 3. **Set up your menu.** Select the Navigation block in the header and add your own page links. Replace any placeholder links such as `#` with real destinations.
-4. **Update social links.** Edit the footer's Social Icons block. The supplied Twitter, LinkedIn, and GitHub links point to the author's profiles; replace them with yours or remove unwanted links. They open in a new tab.
+4. **Personalize the footer.** The Copyright block uses your site title by default. Select it and open **Copyright settings** in the block sidebar to enter an optional holder name. Add a Social Icons block with your own destinations if needed; the theme supplies no social accounts.
 5. **Choose your homepage.** Use **Settings > Reading** to show your latest posts or select a static homepage and a separate posts page. The posts-per-page setting also controls the theme's inherited article lists.
 6. **Write your introduction.** Add the opening content before your first Heading 2. For articles without that heading, write an excerpt if you want more control over the summary.
-7. **Review and save.** Preview the site at desktop and phone sizes, then save your Site Editor changes.
+7. **Configure comments.** Review **Settings > Discussion** and each post's discussion settings. Existing comments remain visible when comments are closed, but the form is not shown. Replies and pagination follow your WordPress settings.
+8. **Review and save.** Preview the site at desktop and phone sizes, then save your Site Editor changes.
 
 Editor labels can differ slightly between WordPress versions and languages.
 
@@ -81,7 +86,7 @@ Headings and spacing become more compact on small screens. The default gold link
 
 The **Copyright** block updates its year automatically using the site's timezone. You do not need to change it every January, although a page cache may need clearing after the year changes.
 
-The holder's name is currently **YOUSSEF BOUHLAL** and is defined in the theme code, not an editor setting. To use a different name without editing code, replace the Copyright block with a Paragraph block containing your own text; that paragraph's year will need updating manually.
+By default, the holder is your site's title from **Settings > General**. Select the Copyright block and enter a **Copyright holder** in its block sidebar to override it. Clear that field to use the site title again. The custom holder is saved with the block and does not change your site title.
 
 ## Updating an existing site
 
@@ -91,6 +96,9 @@ WordPress gives your saved layouts and styles priority over the theme's defaults
 
 - If article lists still show full content, edit the list's Post Template and replace its **Post Content** block with **Post Preview**. Keep Post Content in individual article and page layouts.
 - If the footer still shows a fixed year, replace its old copyright paragraph with the **Copyright** block.
+- Existing Copyright blocks without a custom holder now use the site title instead of the theme author's name. Set a custom holder if a different name is required.
+- Personal social links already saved in your footer remain unchanged. Remove or replace them in the Site Editor; updates do not rewrite saved footer content.
+- If a saved Single Posts template has no comments, add the native Comments block after the article's categories. On WordPress 6.0, the theme default uses the legacy Post Comments block. Back up your layout before considering a reset to the updated default.
 - Previously saved colors, templates, and footer content may need reviewing manually. Compare them with the new defaults before resetting anything.
 - Patterns already inserted and saved in a layout are copies; later theme updates do not automatically replace those copies.
 
@@ -108,18 +116,35 @@ Text copied from a pattern into a saved layout does not automatically change whe
 
 The theme targets **WordPress 6.0+** and **PHP 7.4+**. It uses built-in WordPress blocks alongside its two custom blocks, Post Preview and Copyright. No separate page-builder plugin or external font service is required.
 
-Checks have been completed on **WordPress 7.1.3**, including preview tests on **PHP 7.4.30**. The local site now runs **Apache with PHP 8.2.27**; linked styles and scripts load correctly, and mobile navigation opens, closes with Escape, and restores focus. Responsive checks covered narrow phone and desktop layouts.
+Earlier development checks were recorded on **WordPress 7.1.3**, including preview fixtures on **PHP 7.4.30**, and responsive/navigation checks on the local site. Those historical results do not certify version 1.2.0.
 
-A complete WordPress 6.0 installation and the full signed-in Site Editor workflow have not yet been tested. Minimum-version support remains a compatibility target, not a claim of complete testing on every supported version.
+For version 1.2.0, in-memory fixtures verify the copyright fallback and escaping, editor holder updates with both custom-block API versions, native Gutenberg copyright serialization, conditional reply-script loading, and the comments pattern's WordPress 6.0 and newer branches. PHP syntax, WordPress PHP coding standards, JavaScript lint, and translation-catalog checks pass. CSS lint reports the same three selector-name findings as the preceding version, with no new findings. Branch simulation on a newer runtime is not a complete WordPress 6.0 or PHP 7.4 test.
+
+On November 16, 2026, an initial local HTTP 502 cleared during testing. Public-page checks then confirmed the site-title copyright, an empty-discussion comment form, required-field validation, no horizontal overflow at 375px and 1440px, and mobile navigation closing with Escape and restoring focus. Mobile and desktop comment-form screenshots were reviewed. No test comments or saved layouts were created.
+
+The signed-in Site Editor initially rendered the footer, but subsequently became blank during interaction and on reload. No JavaScript exception or failing HTTP response was captured in a follow-up trace; the cause remains unresolved. Full editor insertion/save/reload checks, comment-submission/moderation scenarios, and a complete WordPress 6.0/PHP 7.4 environment remain release gates, not verified compatibility claims.
+
+### Release gates
+
+Before publishing a GitHub release or downloadable ZIP:
+
+- Run PHP syntax, WordPress coding standards, JavaScript/CSS linting, and block serialization checks on the release files.
+- Test a clean installation on WordPress 6.0/PHP 7.4 and a current supported WordPress/PHP environment without downgrading an existing site.
+- In the signed-in Site Editor, insert and save both custom blocks, reload, and verify custom holder persistence and the empty-holder site-title fallback.
+- Verify comments with open and closed discussions, no comments, threaded replies, pagination, required-field errors, and password-protected posts. Confirm that submitting a comment follows moderation settings.
+- Check mobile and desktop rendering, long comments and holder names, keyboard focus, navigation open/close, and saved-template upgrades without discarding customizations.
+- Package a ZIP with one top-level `youboublocks` directory containing the theme files and a copy of the GPLv2 license text. Exclude `.git`, `.DS_Store`, `node_modules`, development dependencies, and any local site data. Test installation of that ZIP on a clean site.
+
+Do not label the release production-ready while these gates remain incomplete.
 
 ## Developer notes
 
 - Theme configuration uses `theme.json` version 2, with shared CSS for styling that older WordPress versions do not support through that configuration.
 - The editor script needs no build step. Custom blocks use API version 3 on WordPress 6.3 and newer, and version 2 on older supported installations.
+- The Post Comments pattern selects the legacy Post Comments block on WordPress 6.0 and the editable Comments block on WordPress 6.1 and newer.
 - Preview rendering selects complete blocks from the original content instead of cutting rendered HTML. It checks shared-block references with depth and cycle protection, and falls back to plain text for unsafe references.
 - Post context is restored after preview rendering. Full post content is not modified by a global truncation filter.
 - Available checks include PHP syntax, WordPress coding standards, JavaScript and CSS linting, configuration schema checks, native block serialization, and editor render endpoints. Use in-memory preview fixtures rather than creating temporary test posts or files.
-- The earlier Local asset-delivery problem was resolved on October 13, 2026 by gracefully stopping a stale site-level nginx process after the switch to Apache. No server configuration changes were necessary.
 
 The translation text domain is `youboublocks`. The generated POT template is included at [languages/youboublocks.pot](languages/youboublocks.pot). After adding or changing translatable theme text, refresh it from the theme directory with WP-CLI:
 

@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Youbou Blocks 1.1.0\n"
+"Project-Id-Version: Youbou Blocks 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/youboublocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,6 +101,23 @@ msgstr ""
 
 #: assets/editor-blocks.js:48
 msgid "Copyright"
+msgstr ""
+
+#: assets/editor-blocks.js
+msgid "Copyright settings"
+msgstr ""
+
+#: assets/editor-blocks.js
+msgid "Copyright holder"
+msgstr ""
+
+#: assets/editor-blocks.js
+msgid "Leave empty to use the site title."
+msgstr ""
+
+#: patterns/post-comments.php
+msgctxt "Pattern title"
+msgid "Post Comments"
 msgstr ""
 
 #: theme.json
