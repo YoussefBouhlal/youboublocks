@@ -16,7 +16,7 @@ function youbou_blocks_register_blocks() {
 	wp_register_script(
 		'youbou-blocks-editor',
 		get_template_directory_uri() . '/assets/editor-blocks.js',
-		array( 'wp-blocks', 'wp-block-editor', 'wp-element', 'wp-i18n', 'wp-server-side-render' ),
+		array( 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-element', 'wp-i18n', 'wp-server-side-render' ),
 		wp_get_theme( get_template() )->get( 'Version' ),
 		true
 	);
@@ -39,6 +39,12 @@ function youbou_blocks_register_blocks() {
 			'api_version'     => $api_version,
 			'editor_script'   => 'youbou-blocks-editor',
 			'render_callback' => 'youbou_blocks_render_copyright',
+			'attributes'      => array(
+				'holder' => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+			),
 			'supports'        => array(
 				'html'       => false,
 				'color'      => array(
@@ -55,11 +61,16 @@ add_action( 'init', 'youbou_blocks_register_blocks' );
 /**
  * Render the copyright year on every request, including saved templates.
  *
+ * @param array $attributes Block attributes.
  * @return string Copyright markup.
  */
-function youbou_blocks_render_copyright() {
+function youbou_blocks_render_copyright( $attributes = array() ) {
+	$holder = isset( $attributes['holder'] ) && is_string( $attributes['holder'] ) ? trim( $attributes['holder'] ) : '';
+	if ( '' === $holder ) {
+		$holder = get_bloginfo( 'name' );
+	}
 	/* translators: 1: Current year, 2: Copyright holder. */
-	$text = sprintf( __( 'Copyright %1$s %2$s', 'youboublocks' ), wp_date( 'Y' ), 'YOUSSEF BOUHLAL' );
+	$text = sprintf( __( 'Copyright %1$s %2$s', 'youboublocks' ), wp_date( 'Y' ), $holder );
 	return '<p ' . get_block_wrapper_attributes( array( 'class' => 'youbou-blocks-copyright' ) ) . '>' . esc_html( $text ) . '</p>';
 }
 
